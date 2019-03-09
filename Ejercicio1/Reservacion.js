@@ -4,8 +4,8 @@ export default class Reservacion {
         this._IDTipoDeHabitacion = IDTipoDeHabitacion;
         this._diaDeInicio = diaDeInicio;
         this._diaDeTermino = diaDeTermino;
-        this._numeroDeDiasReservados = ((diaDeTermino - diaDeInicio).parse() / (24 * 60 * 60 * 1000));
-        this._tipoDeHabitacion = getTipoHabitacion();
+        this._numeroDeDiasReservados = (this._diaDeTermino.getTime() - this._diaDeInicio.getTime())/(24*60*60*1000);
+        this._IDTipoDeHabitacion = IDTipoDeHabitacion;
     }
 
     get nombre() {
@@ -28,10 +28,6 @@ export default class Reservacion {
         return this._numeroDeDiasReservados;
     }
 
-    get tipoDeHabitacion(){
-        return this._tipoDeHabitacion;
-    }
-
     getTipoHabitacion() {
         switch (this._IDTipoDeHabitacion) {
             case 'unaHabitacion':
@@ -39,7 +35,7 @@ export default class Reservacion {
             case 'habitacionDoble':
                 return 'Habitación doble';
             case 'habitacionTriple':
-                return 'Habitación Triple'
+                return 'Habitación triple'
             case 'suite':
                 return 'Suite';
         }
